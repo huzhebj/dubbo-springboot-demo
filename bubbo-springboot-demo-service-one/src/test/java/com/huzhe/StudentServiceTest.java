@@ -17,7 +17,7 @@ public class StudentServiceTest {
 
     @Test
     public void getById() {
-        Student student = studentService.getById(2L);
+        Student student = studentService.getById(1L);
         System.out.println(student);
     }
 
