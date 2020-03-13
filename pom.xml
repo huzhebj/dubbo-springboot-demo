@@ -15,7 +15,7 @@
         <module>bubbo-springboot-demo-service-two</module>
     </modules>
 
-    <name>dubbo-springboot</name>
+    <name>dubbo-springboot-demo</name>
     <description>Dubbo springboot for Spring Boot</description>
 
     <parent>
