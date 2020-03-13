@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * DemoConsumerController
  * 消费者控制层
- * @author xiaoze
- * @date 2018/6/7
  */
 @RestController
 public class DemoConsumerController {
 
-    @Reference(version = "${demo.service.version}")
+    @Reference
     private DemoService demoService;
 
     @RequestMapping("/sayHello/{name}")

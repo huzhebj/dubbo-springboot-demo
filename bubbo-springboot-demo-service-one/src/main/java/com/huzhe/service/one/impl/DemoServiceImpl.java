@@ -3,7 +3,7 @@ package com.huzhe.service.one.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.huzhe.service.DemoService;
 
-@Service(version = "${demo.service.version}")
+@Service
 public class DemoServiceImpl implements DemoService {
 
     @Override
