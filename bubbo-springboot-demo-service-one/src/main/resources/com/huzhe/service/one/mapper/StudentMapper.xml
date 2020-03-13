@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huzhe.service.one.mapper.StudentMapper">
+  <select id="getById" parameterType="long" resultType="com.huzhe.model.Student">
+    SELECT * from tbl_student where id = #{id};
+  </select>
+</mapper>
