@@ -1,7 +1,7 @@
 package com.huzhe.service.one.impl;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.huzhe.exception.BusinessException;
 import com.huzhe.model.Student;
 import com.huzhe.service.StudentService;
 import com.huzhe.service.one.mapper.StudentMapper;
@@ -16,5 +16,20 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student getById(long id) {
         return studentMapper.getById(id);
+    }
+
+    @Override
+    public Student addStudent(Student student) {
+        studentMapper.addStudent(student);
+        return student;
+    }
+
+    @Override
+    public Student updateStudent(Student student) throws BusinessException {
+        if(student.getId() <= 0){
+            throw new BusinessException(101,"学生id不能为空");
+        }
+        studentMapper.updateStudent(student);
+        return student;
     }
 }

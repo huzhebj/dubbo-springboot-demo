@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface StudentMapper {
     Student getById(long id);
+    void addStudent(Student student);
+    void updateStudent(Student student);
 }

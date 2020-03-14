@@ -4,4 +4,23 @@
   <select id="getById" parameterType="long" resultType="com.huzhe.model.Student">
     SELECT * from tbl_student where id = #{id};
   </select>
+
+  <insert id="addStudent" parameterType="com.huzhe.model.Student" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_student(
+    <if test="name != null">
+      name,
+    </if>
+    age
+    )VALUES (
+    <if test="name != null">
+      #{name},
+    </if>
+    #{age}
+    )
+  </insert>
+
+  <update id="updateStudent" parameterType="com.huzhe.model.Student">
+    update tbl_student set name = #{name},age = #{age} where id = #{id}
+  </update>
+
 </mapper>
