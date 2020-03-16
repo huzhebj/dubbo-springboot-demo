@@ -2,6 +2,8 @@ package com.huzhe;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzhe.exception.BusinessException;
+import com.huzhe.model.GetStudentsRequest;
+import com.huzhe.model.GetStudentsResponse;
 import com.huzhe.model.Student;
 import com.huzhe.service.StudentService;
 import org.junit.Test;
@@ -37,6 +39,15 @@ public class StudentServiceTest {
         student.setName("lili");
         student.setAge(11);
         studentService.updateStudent(student);
+        System.out.println("");
+    }
+
+    @Test
+    public void getStudents() throws BusinessException {
+        GetStudentsRequest getStudentsRequest = new GetStudentsRequest();
+        getStudentsRequest.setPageNum(1);
+        getStudentsRequest.setPageSize(2);
+        GetStudentsResponse getStudentsResponse = studentService.getStudents(getStudentsRequest);
         System.out.println("");
     }
 

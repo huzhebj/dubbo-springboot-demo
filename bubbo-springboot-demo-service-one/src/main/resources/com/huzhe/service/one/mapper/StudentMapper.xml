@@ -23,4 +23,9 @@
     update tbl_student set name = #{name},age = #{age} where id = #{id}
   </update>
 
+  <select id="getStudents" parameterType="map" resultType="com.huzhe.model.Student">
+    select * from tbl_student
+    where 1 = 1
+  </select>
+
 </mapper>
