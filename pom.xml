@@ -9,10 +9,9 @@
     <packaging>jar</packaging>
 
     <modules>
-        <module>bubbo-springboot-demo-api</module>
-        <module>bubbo-springboot-demo-interface</module>
-        <module>bubbo-springboot-demo-service-one</module>
-        <module>bubbo-springboot-demo-service-two</module>
+        <module>dubbo-springboot-demo-api</module>
+        <module>dubbo-springboot-demo-interface</module>
+        <module>dubbo-springboot-demo-service-one</module>
     </modules>
 
     <name>dubbo-springboot-demo</name>
