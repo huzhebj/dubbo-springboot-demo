@@ -12,7 +12,7 @@ spring:
   resources:
     add-mappings: false
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/isales_db_isales_001
+    url: jdbc:mysql://127.0.0.1:3306/db_test
     username: admin
     password: admin
     driver-class-name: com.mysql.jdbc.Driver
