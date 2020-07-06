@@ -1,6 +1,7 @@
 package com.huzhe.service.one.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.huzhe.exception.BusinessException;
@@ -11,6 +12,8 @@ import com.huzhe.service.StudentService;
 import com.huzhe.service.one.mapper.StudentMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +25,22 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
+    @Autowired
+    @Qualifier("commonRedisTemplate")
+    private RedisTemplate<String, String> commonRedisTemplate;
+
     @Override
     public Student getById(long id) {
-        return studentMapper.getById(id);
+        String key = "student_" + id;
+        if (commonRedisTemplate.opsForValue().get(key) != null) {
+            String value = commonRedisTemplate.opsForValue().get(key);
+            Student student = JSON.parseObject(value, Student.class);
+            return student;
+        } else {
+            Student student = studentMapper.getById(id);
+            commonRedisTemplate.opsForValue().set(key, JSON.toJSONString(student));
+            return student;
+        }
     }
 
     @Override
@@ -38,6 +54,8 @@ public class StudentServiceImpl implements StudentService {
         if(student.getId() <= 0){
             throw new BusinessException(101,"学生id不能为空");
         }
+        String key = "student_" + student.getId();
+        commonRedisTemplate.delete(key);
         studentMapper.updateStudent(student);
         return student;
     }

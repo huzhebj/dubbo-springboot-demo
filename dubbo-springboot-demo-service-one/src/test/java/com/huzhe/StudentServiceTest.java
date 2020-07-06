@@ -37,7 +37,8 @@ public class StudentServiceTest {
     @Test
     public void updateStudent() throws BusinessException {
         Student student = new Student();
-        student.setName("lili");
+        student.setId(1L);
+        student.setName("JACK");
         student.setAge(11);
         studentService.updateStudent(student);
         System.out.println("");
